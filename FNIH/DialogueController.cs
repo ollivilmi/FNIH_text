@@ -6,7 +6,7 @@ namespace FNIH
 	{
 		private Dialogue dialogue;
 		private int level, input, reply, mood;
-		private int[] answers;
+		private string[] answers;
 
 		public DialogueController ()
 		{
@@ -14,7 +14,7 @@ namespace FNIH
 			this.input = 0; 
 			this.reply = 0; 
 			this.mood = 0;
-			this.answers = new int[3];
+			this.answers = new string[3];
 			this.dialogue = new Dialogue ();
 		}
 
@@ -45,19 +45,19 @@ namespace FNIH
 				input = (Convert.ToInt32 (Console.ReadLine ())) - 1;  //Use user input (1-3)
 
 				switch (answers [input]) {							//Randomized answers return an array of answers[3], that contains
-				case 1:											    //Which answers are POSITIVE, NEUTRAL or NEGATIVE
+				case "Positive":											    //Which answers are POSITIVE, NEUTRAL or NEGATIVE
 					Console.Write ("(positive)\n\n");			    
 					level++;                                   		//Level++ takes the conversation to the next level	
 					reply = 1;										// and reply is used as a parameter to define
 					mood += ((int)(0.4*(double)likability)); 		// a POSITIVE, NEUTRAL, or NEGATIVE response
 					break;
-				case 2:
+				case "Neutral":
 					Console.Write ("(neutral)\n\n");
 					level++;
 					reply = 2;
 					mood += ((int)(0.1*(double)likability));
 					break;
-				case 3:
+				case "Negative":
 					Console.Write ("(negative)\n\n");
 					level++;
 					reply = 3;

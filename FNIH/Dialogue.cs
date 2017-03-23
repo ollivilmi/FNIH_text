@@ -8,7 +8,7 @@ namespace FNIH
 		dialogue2Negative, dialogue3Positive, dialogue3Neutral, dialogue3Negative;
 		private string[][] dialogue2, dialogue3;
 		private Random random;
-		private int[] answers;
+		private string[] answers;
 		private int select;
 		public Dialogue ()
 		{
@@ -47,7 +47,7 @@ namespace FNIH
 			this.dialogue2 = new string[][] { dialogue2Positive, dialogue2Neutral, dialogue2Negative };
 			this.dialogue3 = new string[][] { dialogue3Positive, dialogue3Neutral, dialogue3Negative };
 			this.random = new Random ();
-			this.answers = new int[3];
+			this.answers = new string[3];
 			this.select = 0;
 		}
 
@@ -59,34 +59,34 @@ namespace FNIH
 			this.random = new Random ();
 		}
 
-		public int[] randomSelection() { //Used to generate random answer options for array answers[3]
+		public string[] randomSelection() { //Used to generate random answer options for array answers[3]
 			for (int i = 0; i < 3; i++)
 			{
 				select = random.Next (1, 4); //Random number 1-3
 					switch (select) 
 					{
 						case 1:
-						answers[i] = DialoguePositive.getDialogue();  //Print answer and return that answers[i] = positive
+						answers[i] = DialoguePositive.getDialogue();  //Print answer and return that answers[i] = Positive
 						break;
 						case 2: 
-						answers[i] = DialogueNeutral.getDialogue(); //Print answer and return that answers[i] = neutral
+						answers[i] = DialogueNeutral.getDialogue(); //Print answer and return that answers[i] = Neutral
 						break;
 						case 3: 
-						answers[i] = DialogueNegative.getDialogue(); //Print answer and return that answers[i] = negative
+						answers[i] = DialogueNegative.getDialogue(); //Print answer and return that answers[i] = Negative
 						break;
 					}
 			}
-			return answers; //Return answers[3], which contains integers 1-3 (1 = POSITIVE, 2 NEUTRAL, 3 NEGATIVE)
+			return answers; //Return answers[3], which contains strings (Positive, Neutral, Negative)
 		}
 
-		public int[] startDialogue1()
+		public string[] startDialogue1()
 		{
 			Console.WriteLine ();
 			Console.WriteLine (dialogue1 [random.Next (0, dialogue1.Length)]+"\n");
 			return randomSelection (); //Print random answers and return answers[3]
 		}
 
-		public int[] startDialogue2(int reply) //Parameter reply uses user input 1-3
+		public string[] startDialogue2(int reply) //Parameter reply uses user input 1-3
 		{
 			Console.WriteLine ();
 			switch (reply) {
@@ -104,7 +104,7 @@ namespace FNIH
 			}
 		}
 
-		public int[] startDialogue3(int reply)
+		public string[] startDialogue3(int reply)
 		{
 			Console.WriteLine ();
 			switch (reply) {

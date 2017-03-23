@@ -4,9 +4,9 @@ namespace FNIH
 {
 	public class Game
 	{
-		Player player;
-		GameEvents events;
-		DialogueController dialogue;
+		private Player player;
+		private GameEvents events;
+		private DialogueController dialogue;
 		private bool playing;
 		private double amount;
 		private string input;

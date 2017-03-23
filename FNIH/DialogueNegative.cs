@@ -16,9 +16,9 @@ namespace FNIH
 		private static int listSize = negative.Count;
 		private static Random random = new Random();
 
-		public static int getDialogue() {
+		public static string getDialogue() {
 			Console.WriteLine("Answer: "+negative[random.Next(0,listSize)]);
-			return 3;
+			return "Negative";
 		}
 	}
 }
