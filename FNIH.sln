@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FNIH", "FNIH\FNIH.csproj", "{6EC5AA4F-6389-43AF-AA8F-350CBD54A4C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game", "FNIH\Game.csproj", "{6EC5AA4F-6389-43AF-AA8F-350CBD54A4C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

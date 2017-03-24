@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FNIH
+namespace Game
 {
 	public class MainClass
 	{

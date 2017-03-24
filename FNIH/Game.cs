@@ -1,6 +1,8 @@
 ﻿using System;
+using Dialogue;
+using Gambling;
 
-namespace FNIH
+namespace Game
 {
 	public class Game
 	{
@@ -19,9 +21,9 @@ namespace FNIH
 			this.events = new GameEvents (18, 00, player); //Time X hours, X minutes, player
 
 			while (playing == true) {
-				Console.WriteLine ("\nDrunk: {0}, Fun: {1}, Money: {2}, Time: {3}:{4} Likability: {5} Mood: {6}", 
+				Console.WriteLine ("\nDrunk: {0}, Fun: {1}, Money: {2}, Time: {3}:{4} Likability: {5} Mood: {6} Score: {7}", 
 					player.drunkLevel, player.funLevel, player.money, events.hour, events.minute, 
-					player.getLikability(), player.getMood()); //Print stats on console
+					player.getLikability(), player.getMood(), events.score); //Print stats on console
 				Console.WriteLine ("What do you want to do:\n");
 				input = Console.ReadLine ();
 				switch (input) {

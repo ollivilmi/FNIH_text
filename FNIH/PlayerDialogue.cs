@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FNIH
+namespace Dialogue
 {
 	public abstract class PlayerDialogue
 	{
