@@ -1,0 +1,5 @@
+C:\Users\Hillo\Documents\Projects\FNIH\FNIH\bin\Debug\FNIH.exe
+C:\Users\Hillo\Documents\Projects\FNIH\FNIH\bin\Debug\FNIH.pdb
+C:\Users\Hillo\Documents\Projects\FNIH\FNIH\obj\x86\Debug\Game.csprojResolveAssemblyReference.cache
+C:\Users\Hillo\Documents\Projects\FNIH\FNIH\obj\x86\Debug\FNIH.exe
+C:\Users\Hillo\Documents\Projects\FNIH\FNIH\obj\x86\Debug\FNIH.pdb
