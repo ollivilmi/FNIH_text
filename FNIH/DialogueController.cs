@@ -45,11 +45,11 @@ namespace FNIH
 				input = (Convert.ToInt32 (Console.ReadLine ())) - 1;  //Use user input (1-3)
 
 				switch (answers [input]) {							//Randomized answers return an array of answers[3], that contains
-				case "Positive":											    //Which answers are POSITIVE, NEUTRAL or NEGATIVE
+				case "Positive":								    //Which answers are Positive, Neutral or Negative
 					Console.Write ("(positive)\n\n");			    
 					level++;                                   		//Level++ takes the conversation to the next level	
 					reply = 1;										// and reply is used as a parameter to define
-					mood += ((int)(0.4*(double)likability)); 		// a POSITIVE, NEUTRAL, or NEGATIVE response
+					mood += ((int)(0.4*(double)likability)); 		// a Positive, Neutral or Negative response
 					break;
 				case "Neutral":
 					Console.Write ("(neutral)\n\n");

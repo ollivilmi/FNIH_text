@@ -28,9 +28,11 @@ namespace FNIH
 				case "drink":
 					Console.WriteLine ("How much: ");
 					amount = Convert.ToDouble (Console.ReadLine ()); //How much means how many beers
-					player.drink ((int)(10 * amount));              
-					events.changeTime (10 * (int)amount);			//Drinking one beer takes 10 minutes 
-					player.useMoney (-(amount * 7.5));				//Price of one beer is 7,50
+					if (player.useMoney (-amount * 7.50) == true) {
+						player.drink ((int)(10 * amount)); 
+						events.changeTime (10 * (int)amount);
+					} else                                        //Drinking one beer takes 10 minutes
+						Console.WriteLine ("Not enough money");	  //Price of one beer is 7,50			 				
 					break;
 				case "dialogue":
 					player.changeMood (dialogue.startDialogue (player.getLikability ())); //Start dialogue
