@@ -1,1 +1,12 @@
-﻿<Properties StartupItem="FNIH\Game.csproj" />
+﻿<Properties StartupItem="FNIH\Game.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FNIH\NPC.cs">
+    <Files>
+      <File FileName="FNIH\NPC.cs" Line="13" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

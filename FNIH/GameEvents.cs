@@ -21,17 +21,17 @@ namespace Game
 
 		public void changeTime (int minute) {
 			this.minute += minute;
+			player.drink (-(int)((double) minute * 1/6)); //Drunk level decreases by the amount of minutes passed
 			while (this.minute >= 60 || this.hour == 24) {
 				if (this.minute >= 60) { 
-					this.minute -= 60;			//Every time a hour passes
+					this.minute -= 60;			//Every hour in Africa an hour passes
 					this.hour++;				// Have some fun if you are drunk
-					player.haveFun (0);			
+					player.haveFun (-10);			
 					this.score += player.funLevel;
 				}
 				if (this.hour == 24) {
 					this.hour = 0;
 				}
-				player.drink (-(int)((double) minute * 1/6)); //Drunk level decreases by the amount of minutes passed
 			}												//!Note! If only 5 minutes passes it doesnt decrease.
 		}			
 	}

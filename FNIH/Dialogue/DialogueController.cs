@@ -51,7 +51,7 @@ namespace Dialogue
 				Console.Write ("(1-3): ");
 				sInput = Console.ReadLine();
 				check = int.TryParse (sInput, out input);
-				while (check == false) {
+				while (check == false || input > 3 || input < 0) {
 					Console.WriteLine ("Use an integer (1-3):");   //Make sure user input is an integer
 					sInput = (Console.ReadLine ());
 					check = int.TryParse (sInput, out input);

@@ -47,10 +47,10 @@ namespace Game
 
 		public void changeMood(int mood) {
 			this.mood += mood;
-			if (mood > 100) {				//changeMood is used to set your mood 0-100
+			if (this.mood > 100) {				//changeMood is used to set your mood 0-100
 				this.mood = 100;
 			}
-			if (mood < 0) {
+			if (this.mood < 0) {
 				this.mood = 0;
 			}
 		}
