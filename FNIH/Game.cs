@@ -76,12 +76,11 @@ namespace Game
 					if (player.useMoney (-amount) == false) {                                       
 						Console.WriteLine ("Not enough money");	  		 				
 						break;	
-					}											//Throw a coin to double your money or lose it
-					player.useMoney (-amount);						
+					}											//Throw a coin to double your money or lose it						
 					amount = CoinToss.gamble (amount);
 					if (amount > 0) {
 						player.haveFun (10);
-						player.useMoney (amount);
+						player.money += amount;
 					} else {
 						player.haveFun (-5);
 					}
