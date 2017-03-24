@@ -7,6 +7,8 @@ namespace Dialogue
 		private Dialogue dialogue;
 		private int level, input, reply, mood;
 		private string[] answers;
+		private string sInput;
+		bool check;
 
 		public DialogueController ()
 		{
@@ -16,8 +18,13 @@ namespace Dialogue
 			this.mood = 0;
 			this.answers = new string[3];
 			this.dialogue = new Dialogue ();
+			this.check = false;
 		}
-
+		/// <summary>
+		/// Starts the dialogue.
+		/// </summary>
+		/// <returns>The dialogue.</returns>
+		/// <param name="likability">Likability.</param>
 		public int startDialogue (int likability)
 		{
 			while (level < 4) {
@@ -42,7 +49,15 @@ namespace Dialogue
 					break;
 				}
 				Console.Write ("(1-3): ");
-				input = (Convert.ToInt32 (Console.ReadLine ())) - 1;  //Use user input (1-3)
+				sInput = Console.ReadLine();
+				check = int.TryParse (sInput, out input);
+				while (check == false) {
+					Console.WriteLine ("Use an integer (1-3):");   //Make sure user input is an integer
+					sInput = (Console.ReadLine ());
+					check = int.TryParse (sInput, out input);
+				}
+				input--;
+				//Use user input (1-3)
 
 				switch (answers [input]) {							//Randomized answers return an array of answers[3], that contains
 				case "Positive":								    //Which answers are Positive, Neutral or Negative

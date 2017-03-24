@@ -1,6 +1,7 @@
 ﻿using System;
 using Dialogue;
 using Gambling;
+using System.Collections.Generic;
 
 namespace Game
 {
@@ -9,9 +10,10 @@ namespace Game
 		private Player player;
 		private GameEvents events;
 		private DialogueController dialogue;
-		private bool playing;
+		private bool playing, check;
 		private double amount;
-		private string input;
+		private string input, command;
+		private Dictionary<string,string> commands;
 
 		public Game ()
 		{
@@ -19,22 +21,36 @@ namespace Game
 			this.dialogue = new DialogueController ();
 			this.player = new Player (70, 0, 187.50, 0); //Likability, drunkLevel, money, funLevel
 			this.events = new GameEvents (18, 00, player); //Time X hours, X minutes, player
+			this.commands = Commands.GetCommands();
+			this.check = false;
 
 			while (playing == true) {
 				Console.WriteLine ("\nDrunk: {0}, Fun: {1}, Money: {2}, Time: {3}:{4} Likability: {5} Mood: {6} Score: {7}", 
 					player.drunkLevel, player.funLevel, player.money, events.hour, events.minute, 
 					player.getLikability(), player.getMood(), events.score); //Print stats on console
+	
 				Console.WriteLine ("What do you want to do:\n");
-				input = Console.ReadLine ();
-				switch (input) {
+				input = (Console.ReadLine ());
+				check = commands.TryGetValue(input, out command);
+				while (check == false) {
+					Console.WriteLine ("Invalid argument\n");
+					Console.WriteLine ("What do you want to do:\n"); //Checks that user input is correct
+					input = Console.ReadLine ();
+					check = commands.TryGetValue (input, out command);
+				}
+				command = input;
+				check = false;
+
+				switch (commands[command]) {
 				case "drink":
 					Console.WriteLine ("How much: ");
 					amount = Convert.ToDouble (Console.ReadLine ()); //How much means how many beers
-					if (player.useMoney (-amount * 7.50) == true) {
-						player.drink ((int)(10 * amount)); 
-						events.changeTime (10 * (int)amount);
-					} else                                        //Drinking one beer takes 10 minutes
-						Console.WriteLine ("Not enough money");	  //Price of one beer is 7,50			 				
+					if (player.useMoney (-amount * 7.50) == false) {												//Drinking one beer takes 10 minutes
+						Console.WriteLine ("Not enough money");	  //Price of one beer is 7,50
+						break;
+					}
+					player.drink ((int)(10 * amount)); 
+					events.changeTime (10 * (int)amount);
 					break;
 				case "dialogue":
 					player.changeMood (dialogue.startDialogue (player.getLikability ())); //Start dialogue
@@ -56,8 +72,12 @@ namespace Game
 					break;
 				case "gamble":
 					Console.WriteLine ("How much: ");
-					amount = Convert.ToDouble (Console.ReadLine ()); //Throw a coin to double your money or lose
-					player.useMoney (-amount);						//everything
+					amount = Convert.ToDouble (Console.ReadLine ());
+					if (player.useMoney (-amount) == false) {                                       
+						Console.WriteLine ("Not enough money");	  		 				
+						break;	
+					}											//Throw a coin to double your money or lose it
+					player.useMoney (-amount);						
 					amount = CoinToss.gamble (amount);
 					if (amount > 0) {
 						player.haveFun (10);
