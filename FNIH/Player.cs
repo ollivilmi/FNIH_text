@@ -6,9 +6,8 @@ namespace Game
 	{
 		public int drunkLevel { get; set; }
 		private int likability;
-		private int mood;
+		private int mood, funLevel;
 		public double money { get; set; }
-		public int funLevel { get; set; }
 		private bool wallet;
 			
 
@@ -29,8 +28,10 @@ namespace Game
 			
 		public void haveFun(int fun) {
 			funLevel += fun+(int)drunkFun();		//Have fun increases fun level and takes drunkLevel into
-			if (funLevel >= 100) {					//consideration as well
-				funLevel = 100;
+			if (funLevel > 50) {					//consideration as well
+				funLevel = 50;
+			} else if (funLevel < -50) {
+				funLevel = -50;
 			}
 		}
 			
@@ -53,6 +54,10 @@ namespace Game
 			if (this.mood < 0) {
 				this.mood = 0;
 			}
+		}
+
+		public int getfunLevel() {
+			return funLevel;
 		}
 
 		public int getMood() {

@@ -25,16 +25,16 @@ namespace Game
 			this.check = false;
 
 			while (playing == true) {
-				Console.WriteLine ("\nDrunk: {0}, Fun: {1}, Money: {2}, Time: {3}:{4} Likability: {5} Mood: {6} Score: {7}", 
-					player.drunkLevel, player.funLevel, player.money, events.hour, events.minute, 
+				Console.WriteLine ("\nDrunk: {0}, Fun: {1}, Money: {2}, Likability: {5} Mood: {6} \nScore: {7} Time: {3}:{4}", 
+					player.drunkLevel, player.getfunLevel(), player.money, events.hour, events.minute, 
 					player.getLikability(), player.getMood(), events.score); //Print stats on console
 	
-				Console.WriteLine ("What do you want to do:\n");
+				Console.WriteLine ("\nWhat do you want to do: ");
 				input = (Console.ReadLine ());
 				check = commands.TryGetValue(input, out command);
 				while (check == false) {
 					Console.WriteLine ("Invalid argument\n");
-					Console.WriteLine ("What do you want to do:\n"); //Checks that user input is correct
+					Console.WriteLine ("What do you want to do:"); //Checks that user input is correct
 					input = Console.ReadLine ();
 					check = commands.TryGetValue (input, out command);
 				}
@@ -43,10 +43,17 @@ namespace Game
 
 				switch (commands[command]) {
 				case "drink":
-					Console.WriteLine ("How much: ");
-					amount = Convert.ToDouble (Console.ReadLine ()); //How much means how many beers
-					if (player.useMoney (-amount * 7.50) == false) {												//Drinking one beer takes 10 minutes
-						Console.WriteLine ("Not enough money");	  //Price of one beer is 7,50
+					Console.WriteLine ("How much (number): ");
+					input = Console.ReadLine ();
+					check = double.TryParse (input, out amount);
+					while (check == false) {
+						Console.WriteLine ("Use a number:");   				//Make sure user inputs a number
+						input = Console.ReadLine ();
+						check = double.TryParse (input, out amount);
+					}
+					check = false;
+					if (player.useMoney (-amount * 7.50) == false) {	 //Drinking one beer takes 10 minutes
+						Console.WriteLine ("Not enough money");	  		//Price of one beer is 7,50
 						break;
 					}
 					player.drink ((int)(10 * amount)); 
@@ -56,6 +63,7 @@ namespace Game
 					player.changeMood (dialogue.startDialogue (player.getLikability ())); //Start dialogue
 					events.changeTime (15);												//Dialogue takes 15 minutes
 					player.haveFun (player.getMood());									//+Fun depending on your mood
+					events.addScore(10);
 					break;
 				case "spend":
 					Console.WriteLine ("How much: ");						//Throw away cash
@@ -85,6 +93,10 @@ namespace Game
 						player.haveFun (-5);
 					}
 					events.changeTime (10);
+					break;
+				case "help":
+					Console.WriteLine ("You can drink, start a dialogue, gamble," +
+					" change time, spend money or quit.");
 					break;
 				default:
 					Console.WriteLine ("Invalid command");

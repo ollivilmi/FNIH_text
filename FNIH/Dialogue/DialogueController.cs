@@ -49,18 +49,18 @@ namespace Dialogue
 					break;
 				}
 				Console.Write ("(1-3): ");
-				sInput = Console.ReadLine();
+				sInput = Console.ReadLine ();
 				check = int.TryParse (sInput, out input);
 				while (check == false || input > 3 || input < 0) {
-					Console.WriteLine ("Use an integer (1-3):");   //Make sure user input is an integer
+					Console.WriteLine ("Use an integer (1-3):");   //Make sure user inputs an integer 1-3
 					sInput = (Console.ReadLine ());
 					check = int.TryParse (sInput, out input);
 				}
-				input--;
-				//Use user input (1-3)
+				input--; 
+				//Use user input (answers[0-2])
 
-				switch (answers [input]) {							//Randomized answers return an array of answers[3], that contains
-				case "Positive":								    //Which answers are Positive, Neutral or Negative
+				switch (answers [input]) {							//Randomized answers return an array of answers[3], which contains
+				case "Positive":								    //answers[0] Positive, answers[1] Neutral, answers[2] Negative
 					Console.Write ("(positive)\n\n");			    
 					level++;                                   		//Level++ takes the conversation to the next level	
 					reply = 1;										// and reply is used as a parameter to define

@@ -25,6 +25,7 @@ namespace Game
 			{ "leave", "quit" },
 			{ "end", "quit" },
 			{ "quit", "quit" },
+			{ "die", "quit" },
 			{ "change time", "changeTime" },
 			{ "set time", "changeTime" },
 			{ "forward time", "changeTime" },
@@ -34,7 +35,11 @@ namespace Game
 			{ "toss coin", "gamble" },
 			{ "play", "gamble" },
 			{ "bet", "gamble" },
-			{ "wager", "gamble" }
+			{ "wager", "gamble" },
+			{ "help", "help" },
+			{ "what to do", "help" },
+			{ "options", "help" },
+			{ "?", "help" }
 		};
 
 		public static Dictionary<string,string> GetCommands()
