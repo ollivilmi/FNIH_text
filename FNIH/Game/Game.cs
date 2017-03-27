@@ -67,8 +67,10 @@ namespace Game
 					string item;
 					npc.ReturnItems (out item);
 					if (item.Length > 0) {
+						Console.WriteLine ("You received: " +item);
 						player.AddItem (item);
 					}
+					player.PrintItems ();
 					events.changeTime (15);												//Dialogue takes 15 minutes
 					player.haveFun (10);									//+Fun depending on your mood
 					events.addScore(10);

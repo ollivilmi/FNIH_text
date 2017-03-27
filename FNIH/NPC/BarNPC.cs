@@ -7,11 +7,13 @@ namespace NPC
 	public class BarNPC : NPC
 	{
 		private DialogueController dialogue;
+		private int x;
 		public BarNPC ()
 		{
 			mood = random.Next (0, 101);
-			Items = new List<string>() { "Phone number" };
+			items = new List<string>() { "Love letter", "Phone number" };
 			dialogue = new DialogueController ();
+			x = items.Count - 1;
 		}
 
 		override public void StartDialogue(int likability)
@@ -22,9 +24,14 @@ namespace NPC
 
 		public void ReturnItems(out string item)
 		{
-			if (mood == 100) {	
-				item = Items [0]; 				//Return phone number
-				Items.Remove ("Phone number");		//Remove phone number from list
+			if (mood == 100) {
+				Console.WriteLine ("In love.");
+				if (items.Count > 0) {	
+					item = items [x]; 				//Return first item in list
+					items.Remove(items[x]);				//Remove first item from list
+					x--;
+				} else
+					item = "";
 				return;
 			} else if (mood >= 80 && mood < 100) {
 				Console.WriteLine ("Very happy.");

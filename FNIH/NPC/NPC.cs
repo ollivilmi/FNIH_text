@@ -7,7 +7,7 @@ namespace NPC
 	public abstract class NPC
 	{
 		protected int mood;
-		protected List<string> Items;
+		protected List<string> items;
 		protected Random random = new Random();
 
 		public abstract void StartDialogue(int likability); //Start DialogueController.startDialogue(); or something else

@@ -32,25 +32,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Main.cs" />
-    <Compile Include="GameEvents.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="Player.cs" />
     <Compile Include="Dialogue\Dialogue.cs" />
     <Compile Include="Dialogue\DialogueController.cs" />
     <Compile Include="Dialogue\DialogueNegative.cs" />
     <Compile Include="Dialogue\DialogueNeutral.cs" />
     <Compile Include="Dialogue\DialoguePositive.cs" />
     <Compile Include="Gambling\CoinToss.cs" />
-    <Compile Include="Commands.cs" />
     <Compile Include="Dialogue\PlayerDialogue.cs" />
     <Compile Include="NPC\NPC.cs" />
     <Compile Include="NPC\BarNPC.cs" />
+    <Compile Include="Game\Commands.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Game\GameEvents.cs" />
+    <Compile Include="Game\Main.cs" />
+    <Compile Include="Game\Player.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Dialogue\" />
     <Folder Include="Gambling\" />
     <Folder Include="NPC\" />
+    <Folder Include="Game\" />
   </ItemGroup>
 </Project>

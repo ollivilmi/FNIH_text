@@ -72,7 +72,13 @@ namespace Game
 		public void AddItem(string item) {
 			items.Add (item);
 		}
-
+		public void PrintItems() {
+			Console.WriteLine ("Your items:");
+			foreach (string item in items) {
+				Console.Write (item +", ");
+			}
+			Console.WriteLine ();
+		}
 	}
 }
 
