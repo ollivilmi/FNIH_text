@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Game
 {
@@ -6,9 +7,10 @@ namespace Game
 	{
 		public int drunkLevel { get; set; }
 		private int likability;
-		private int mood, funLevel;
+		private int funLevel;
 		public double money { get; set; }
 		private bool wallet;
+		private List<string> items;
 			
 
 		public Player (int likability, int drunkLevel, double money, int funLevel)
@@ -18,7 +20,7 @@ namespace Game
 			this.likability = likability;
 			this.money = money;
 			this.funLevel = funLevel;
-			this.mood = 0;
+			this.items = new List<string> ();
 		}
 
 		public void dropWallet() {
@@ -45,23 +47,10 @@ namespace Game
 				drunkLevel = 0;
 			}
 		}
-
-		public void changeMood(int mood) {
-			this.mood += mood;
-			if (this.mood > 100) {				//changeMood is used to set your mood 0-100
-				this.mood = 100;
-			}
-			if (this.mood < 0) {
-				this.mood = 0;
-			}
-		}
+			
 
 		public int getfunLevel() {
 			return funLevel;
-		}
-
-		public int getMood() {
-			return this.mood;
 		}
 
 		public double drunkFun() {
@@ -79,6 +68,10 @@ namespace Game
 		public int getLikability() {
 			return likability - (drunkLevel/3); //Return likability, which is affected by drunkLevel
 			}
+
+		public void AddItem(string item) {
+			items.Add (item);
+		}
 
 	}
 }

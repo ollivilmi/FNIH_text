@@ -1,8 +1,17 @@
 ﻿<Properties StartupItem="FNIH\Game.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FNIH\NPC.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FNIH\Game.cs">
     <Files>
       <File FileName="FNIH\NPC.cs" Line="13" Column="1" />
+      <File FileName="FNIH\Game.cs" Line="23" Column="84" />
+      <File FileName="FNIH\GameEvents.cs" Line="30" Column="39" />
+      <File FileName="FNIH\Main.cs" Line="1" Column="1" />
+      <File FileName="FNIH\Player.cs" Line="60" Column="20" />
+      <File FileName="FNIH\Dialogue\DialogueController.cs" Line="46" Column="12" />
+      <File FileName="FNIH\Dialogue\Dialogue.cs" Line="1" Column="1" />
+      <File FileName="FNIH\Commands.cs" Line="44" Column="3" />
+      <File FileName="FNIH\Dialogue\DialogueNegative.cs" Line="1" Column="1" />
+      <File FileName="FNIH\Dialogue\DialoguePositive.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

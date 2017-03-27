@@ -36,7 +36,6 @@
     <Compile Include="GameEvents.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="PlayerDialogue.cs" />
     <Compile Include="Dialogue\Dialogue.cs" />
     <Compile Include="Dialogue\DialogueController.cs" />
     <Compile Include="Dialogue\DialogueNegative.cs" />
@@ -44,11 +43,14 @@
     <Compile Include="Dialogue\DialoguePositive.cs" />
     <Compile Include="Gambling\CoinToss.cs" />
     <Compile Include="Commands.cs" />
-    <Compile Include="NPC.cs" />
+    <Compile Include="Dialogue\PlayerDialogue.cs" />
+    <Compile Include="NPC\NPC.cs" />
+    <Compile Include="NPC\BarNPC.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Dialogue\" />
     <Folder Include="Gambling\" />
+    <Folder Include="NPC\" />
   </ItemGroup>
 </Project>

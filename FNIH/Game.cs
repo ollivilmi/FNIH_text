@@ -1,12 +1,14 @@
 ﻿using System;
 using Dialogue;
 using Gambling;
+using NPC;
 using System.Collections.Generic;
 
 namespace Game
 {
 	public class Game
 	{
+		private BarNPC npc;
 		private Player player;
 		private GameEvents events;
 		private DialogueController dialogue;
@@ -20,14 +22,15 @@ namespace Game
 			this.playing = true;
 			this.dialogue = new DialogueController ();
 			this.player = new Player (70, 0, 187.50, 0); //Likability, drunkLevel, money, funLevel
+			this.npc = new BarNPC();
 			this.events = new GameEvents (18, 00, player); //Time X hours, X minutes, player
 			this.commands = Commands.GetCommands();
 			this.check = false;
 
 			while (playing == true) {
-				Console.WriteLine ("\nDrunk: {0}, Fun: {1}, Money: {2}, Likability: {5} Mood: {6} \nScore: {7} Time: {3}:{4}", 
+				Console.WriteLine ("\nDrunk: {0}, Fun: {1}, Money: {2}, Likability: {5} \nScore: {6} Time: {3}:{4}", 
 					player.drunkLevel, player.getfunLevel(), player.money, events.hour, events.minute, 
-					player.getLikability(), player.getMood(), events.score); //Print stats on console
+					player.getLikability(), events.score); //Print stats on console
 	
 				Console.WriteLine ("\nWhat do you want to do: ");
 				input = (Console.ReadLine ());
@@ -60,9 +63,14 @@ namespace Game
 					events.changeTime (10 * (int)amount);
 					break;
 				case "dialogue":
-					player.changeMood (dialogue.startDialogue (player.getLikability ())); //Start dialogue
+					npc.changeMood (dialogue.startDialogue (player.getLikability ())); //Start dialogue
+					string item;
+					npc.ReturnItems (out item);
+					if (item.Length > 0) {
+						player.AddItem (item);
+					}
 					events.changeTime (15);												//Dialogue takes 15 minutes
-					player.haveFun (player.getMood());									//+Fun depending on your mood
+					player.haveFun (10);									//+Fun depending on your mood
 					events.addScore(10);
 					break;
 				case "spend":
