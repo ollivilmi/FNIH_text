@@ -1,4 +1,4 @@
-﻿﻿using System; 
+﻿using System; 
 using Game; 
 
 namespace Dialogue 
@@ -16,7 +16,7 @@ namespace Dialogue
 			Console.WriteLine ("Bouncer - Good evening");   
 			// add if (player has ticket item) 
 
-			Console.WriteLine ("Actions: \n(1)Show ticket\n(2)Buy ticket\n");  
+			Console.WriteLine ("Actions: \n(1)Buy ticket\n(2)Leave\n");
 			sInput = Console.ReadLine (); 
 			while (int.TryParse (sInput, out input) == false || input > 2 || input < 0) { 
 				Console.Write ("Use integer (1-2): ");   //Make sure user inputs an integer 1-3 
@@ -26,14 +26,9 @@ namespace Dialogue
 
 
 			switch (input) { 
+
+
 			case 1: 
-
-				Console.WriteLine ("Bouncer - Thank you sir."); 
-				Console.WriteLine ("You are now in the bar"); 
-				return false; 
-
-
-			case 2: 
 
 				Console.WriteLine ("You - I'd like to buy a ticket"); 
 				Console.WriteLine ("Bouncer - That would be 5$."); 
@@ -51,10 +46,24 @@ namespace Dialogue
 
 				switch (input) { 
 				case 1: 
+					Console.WriteLine ("(1)Enter bar\n(2)Don't enter");
+					sInput = Console.ReadLine (); 
+					while (int.TryParse (sInput, out input) == false || input > 2 || input < 0) { 
+						Console.Write ("Use integer (1-2): ");   //Make sure user inputs an integer 1-3 
+						sInput = (Console.ReadLine ()); 
 
-					Console.WriteLine ("You are now in the bar"); 
-					return true; 
-
+					}
+					switch (input) {
+					case 1:
+						Console.WriteLine ("You are now in the bar"); 
+						break;
+					case 2:
+						Console.WriteLine ("You now have a ticket"); 
+						break;
+					default:
+						break;
+					}
+					return true;
 				case 2: 
 					Console.WriteLine ("You did not enter the bar"); 
 					return false; 
@@ -66,7 +75,12 @@ namespace Dialogue
 					return false; 
 
 				} 
-				break; 
+				 
+
+			case 2: 
+				
+				Console.WriteLine ("Bouncer - See you."); 
+				return false;
 
 			default: 
 				Console.WriteLine ("Wrong command"); 

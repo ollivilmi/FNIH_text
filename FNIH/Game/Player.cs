@@ -9,7 +9,7 @@ namespace Game
 		private int likability;
 		private int funLevel;
 		public double money { get; set; }
-		private List<string> items;
+		public List<string> items { get; set; }
 			
 
 		public Player (int likability, int drunkLevel, double money, int funLevel)
