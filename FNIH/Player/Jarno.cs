@@ -18,6 +18,8 @@ namespace Player
         override public void PlayGuitar()
         {
             Console.WriteLine("Playing guitar.");
+            useMoney(5);
+            haveFun(5);
         }
 	}
 }
