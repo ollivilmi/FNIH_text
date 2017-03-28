@@ -37,7 +37,7 @@ namespace Game
 			while (playing == true) {
                 events.PrintStats();                                //Prints stats
 				Console.WriteLine ("\nWhat do you want to do: ");
-                command = events.GetStringInput(commands);           //Get a command string
+                command = events.GetCommandInput(commands);           //Get a command string
 
 				switch (commands[command]) {
 				case "drink":
@@ -52,10 +52,10 @@ namespace Game
                     events.UseMoney(); //Throw away money
 					break;
 				case "quit":
-					playing = false;	   //Quit the game
+                    playing = false;   //Quit the game
 					break;
 				case "change time":
-					Console.WriteLine ("How many minutes: ");       //Skip time
+					Console.WriteLine ("How many minutes: ");  //Skip time
                     amount = events.GetDoubleInput();
 					events.ChangeTime ((int)amount);
 					break;
@@ -67,15 +67,15 @@ namespace Game
 					" change time, spend money, play guitar, check your items, think or quit.");
 					break;
 				case "inventory":
-					player.PrintItems ();
+					player.PrintItems (); //Print inventory
 					break;
 				case "bar":
-                    events.GoToBar(bouncer);
+                    events.GoToBar(bouncer); //Go to bar if you have a ticket, else go to bouncer
 					break;
-				case "think":
+				case "think": //Reveal your characters thoughts
 					player.Think ();
 					break;
-                case "guitar":
+                case "guitar": //Play guitar
                     player.PlayGuitar();
                     break;
 				default:
