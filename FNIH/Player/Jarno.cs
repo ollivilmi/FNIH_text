@@ -14,6 +14,11 @@ namespace Player
 		{
 			Console.WriteLine ("I am Jarno.");
 		}
+
+        override public void PlayGuitar()
+        {
+            Console.WriteLine("Playing guitar.");
+        }
 	}
 }
 

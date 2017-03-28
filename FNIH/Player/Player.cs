@@ -98,5 +98,6 @@ namespace Player
             Console.WriteLine();
         }
         public abstract void Think();
+        public abstract void PlayGuitar();
     }
 }

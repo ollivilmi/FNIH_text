@@ -14,6 +14,11 @@ namespace Player
 		{
 			Console.WriteLine ("I am Placeholder.");
 		}
-	}
+
+        public override void PlayGuitar()
+        {
+            Console.WriteLine("I have no idea how.");
+        }
+    }
 }
 

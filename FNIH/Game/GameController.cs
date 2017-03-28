@@ -124,6 +124,9 @@ namespace Game
 				case "think":
 					player.Think ();
 					break;
+                case "guitar":
+                    player.PlayGuitar();
+                    break;
 				default:
 					Console.WriteLine ("Invalid command");
 					break;
