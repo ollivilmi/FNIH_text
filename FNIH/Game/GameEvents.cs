@@ -1,4 +1,5 @@
 ﻿using System;
+using Player;
 
 namespace Game
 {
@@ -7,8 +8,8 @@ namespace Game
 		public int score { get; set; }
 		public int hour { get; set; }
 		public int minute { get; set; }
-		private Player player;
-		public GameEvents (int hour, int minute, Player player)
+		private PlayerController player;
+		public GameEvents (int hour, int minute, PlayerController player)
 		{
 			this.hour = hour;
 			this.minute = minute;

@@ -47,7 +47,9 @@ namespace Game
 			{ "bar", "bar" },
 			{ "enter bar", "bar" },
 			{ "go to bar", "bar" },
-			{ "pub", "bar" }
+			{ "pub", "bar" },
+			{ "think", "think"},
+			{ "thoughts", "think" }
 		};
 
 		public static Dictionary<string,string> GetCommands()

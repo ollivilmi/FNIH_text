@@ -2,6 +2,7 @@
 using Dialogue;
 using Gambling;
 using NPC;
+using Player;
 using System.Collections.Generic;
 
 namespace Game
@@ -9,29 +10,34 @@ namespace Game
 	public class GameController
 	{
 		private BarNPC npc;
-		private Player player;
+		private CharacterSelection selection;
 		private GameEvents events;
 		private DialogueController dialogue;
 		private bool playing;
 		private double amount;
-		private string input, command;
+		private string input, command, name;
 		private Dictionary<string,string> commands;
 		private BouncerNPC bouncer;
+		private PlayerController player;
 
 		public GameController ()
 		{
+			this.selection = new CharacterSelection ();
+			this.name = selection.StartSelection ();
+
 			this.playing = true;
 			this.dialogue = new DialogueController ();
-			this.player = new Player (70, 0, 187.50, 0); //Likability, drunkLevel, money, funLevel
+
+			this.player = new PlayerController (name); //Likability, drunkLevel, money, funLevel
 			this.npc = new BarNPC();
 			this.events = new GameEvents (18, 00, player); //Time X hours, X minutes, player
 			this.commands = Commands.GetCommands();
 			this.bouncer = new BouncerNPC (player);
 
 			while (playing == true) {
-				Console.WriteLine ("\nDrunk: {0}, Fun: {1}, Money: {2}, Likability: {5} \nScore: {6} Time: {3}:{4}", 
+				Console.WriteLine ("\nDrunk: {0}, Fun: {1}, Money: {2}, Likability: {5} \nScore: {6} Time: {3}:{4} Name: {7}", 
 					player.drunkLevel, player.getfunLevel(), player.money, events.hour, events.minute, 
-					player.getLikability(), events.score); //Print stats on console
+					player.getLikability(), events.score, player.name); //Print stats on console
 	
 				Console.WriteLine ("\nWhat do you want to do: ");
 				input = (Console.ReadLine ());
@@ -114,6 +120,9 @@ namespace Game
 						bouncer.StartDialogue (0);
 					}
 
+					break;
+				case "think":
+					player.Think ();
 					break;
 				default:
 					Console.WriteLine ("Invalid command");

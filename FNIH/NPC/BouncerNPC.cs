@@ -1,6 +1,7 @@
 ﻿using System;
 using Dialogue;
 using Game;
+using Player;
 using System.Collections.Generic;
 
 namespace NPC
@@ -8,8 +9,8 @@ namespace NPC
 	public class BouncerNPC : NPC
 	{
 		private BouncerDialogue bd;
-		private Player player;
-		public BouncerNPC (Player player)
+		private PlayerController player;
+		public BouncerNPC (PlayerController player)
 		{
 			this.player = player;
 			mood = random.Next (0, 101);

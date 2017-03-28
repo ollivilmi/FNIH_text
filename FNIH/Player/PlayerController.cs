@@ -1,23 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Game
+namespace Player
 {
-	public class Player
+	public class PlayerController
 	{
 		public int drunkLevel { get; set; }
-		private int likability;
-		private int funLevel;
+		protected int likability;
+		protected int funLevel;
 		public double money { get; set; }
 		public List<string> items { get; set; }
+		public string name { get; set; }
+
 			
 
-		public Player (int likability, int drunkLevel, double money, int funLevel)
+		public PlayerController (string name)
 		{
-			this.drunkLevel = drunkLevel;
-			this.likability = likability;
-			this.money = money;
-			this.funLevel = funLevel;
+			
+			this.name = name;
+			switch (name) {
+			case "Jarno":
+				this.drunkLevel = 0;
+				this.likability = 100;
+				this.money = 50;
+				this.funLevel = 25;
+				break;
+			case "Make":
+				this.drunkLevel = 30;
+				this.likability = 66;
+				this.money = 200;
+				this.funLevel = 0;
+				break;
+			case "Placeholder":
+				this.drunkLevel = 0;
+				this.likability = 33;
+				this.money = 1000;
+				this.funLevel = -20;
+				break;
+			}
+
 			this.items = new List<string> ();
 		}
 
@@ -75,6 +96,20 @@ namespace Game
 				Console.Write (item +", ");
 			}
 			Console.WriteLine ();
+		}
+
+		public void Think() {
+			switch (this.name) {
+			case "Jarno":
+				Jarno.Think ();
+				break;
+			case "Make":
+				Make.Think ();
+				break;
+			case "Placeholder":
+				Placeholder.Think ();
+				break;
+			}
 		}
 	}
 }
