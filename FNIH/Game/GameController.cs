@@ -6,18 +6,18 @@ using System.Collections.Generic;
 
 namespace Game
 {
-	public class Game
+	public class GameController
 	{
 		private BarNPC npc;
 		private Player player;
 		private GameEvents events;
 		private DialogueController dialogue;
-		private bool playing, check;
+		private bool playing;
 		private double amount;
 		private string input, command;
 		private Dictionary<string,string> commands;
 
-		public Game ()
+		public GameController ()
 		{
 			this.playing = true;
 			this.dialogue = new DialogueController ();
@@ -25,7 +25,6 @@ namespace Game
 			this.npc = new BarNPC();
 			this.events = new GameEvents (18, 00, player); //Time X hours, X minutes, player
 			this.commands = Commands.GetCommands();
-			this.check = false;
 
 			while (playing == true) {
 				Console.WriteLine ("\nDrunk: {0}, Fun: {1}, Money: {2}, Likability: {5} \nScore: {6} Time: {3}:{4}", 
@@ -34,27 +33,22 @@ namespace Game
 	
 				Console.WriteLine ("\nWhat do you want to do: ");
 				input = (Console.ReadLine ());
-				check = commands.TryGetValue(input, out command);
-				while (check == false) {
+
+				while (commands.TryGetValue(input, out command) == false) {
 					Console.WriteLine ("Invalid argument\n");
 					Console.WriteLine ("What do you want to do:"); //Checks that user input is correct
 					input = Console.ReadLine ();
-					check = commands.TryGetValue (input, out command);
 				}
 				command = input;
-				check = false;
 
 				switch (commands[command]) {
 				case "drink":
 					Console.WriteLine ("How much (number): ");
 					input = Console.ReadLine ();
-					check = double.TryParse (input, out amount);
-					while (check == false) {
+					while (double.TryParse (input, out amount) == false) {
 						Console.WriteLine ("Use a number:");   				//Make sure user inputs a number
 						input = Console.ReadLine ();
-						check = double.TryParse (input, out amount);
 					}
-					check = false;
 					if (player.useMoney (-amount * 7.50) == false) {	 //Drinking one beer takes 10 minutes
 						Console.WriteLine ("Not enough money");	  		//Price of one beer is 7,50
 						break;
@@ -107,6 +101,9 @@ namespace Game
 				case "help":
 					Console.WriteLine ("You can drink, start a dialogue, gamble," +
 					" change time, spend money or quit.");
+					break;
+				case "inventory":
+					player.PrintItems ();
 					break;
 				default:
 					Console.WriteLine ("Invalid command");

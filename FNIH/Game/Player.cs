@@ -9,13 +9,11 @@ namespace Game
 		private int likability;
 		private int funLevel;
 		public double money { get; set; }
-		private bool wallet;
 		private List<string> items;
 			
 
 		public Player (int likability, int drunkLevel, double money, int funLevel)
 		{
-			this.wallet = true;
 			this.drunkLevel = drunkLevel;
 			this.likability = likability;
 			this.money = money;
@@ -24,7 +22,6 @@ namespace Game
 		}
 
 		public void dropWallet() {
-			wallet = false;
 			this.money = 0;
 	}
 			

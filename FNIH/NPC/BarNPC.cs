@@ -19,13 +19,12 @@ namespace NPC
 		override public void StartDialogue(int likability)
 		{
 			mood += dialogue.startDialogue (likability);
-
 		}
 
 		public void ReturnItems(out string item)
 		{
 			if (mood == 100) {
-				Console.WriteLine ("In love.");
+				Console.WriteLine ("NPC: In love.");
 				if (items.Count > 0) {	
 					item = items [x]; 				//Return first item in list
 					items.Remove(items[x]);				//Remove first item from list
@@ -34,19 +33,19 @@ namespace NPC
 					item = "";
 				return;
 			} else if (mood >= 80 && mood < 100) {
-				Console.WriteLine ("Very happy.");
+				Console.WriteLine ("NPC: Very happy.");
 
 			} else if (mood >= 60 && mood < 80) {
-				Console.WriteLine ("Happy.");
+				Console.WriteLine ("NPC: Happy.");
 
 			} else if (mood >= 40 && mood < 60) {
-				Console.WriteLine ("Neutral.");
+				Console.WriteLine ("NPC: Neutral.");
 
 			} else if (mood >= 20 && mood < 40) {
-				Console.WriteLine ("Negative.");
+				Console.WriteLine ("NPC: Negative.");
 
 			} else if (mood < 20) {
-				Console.WriteLine ("Very negative.");
+				Console.WriteLine ("NPC: Very negative.");
 			}
 			item = "";
 		}

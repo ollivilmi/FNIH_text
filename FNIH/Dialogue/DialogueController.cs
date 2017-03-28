@@ -8,7 +8,6 @@ namespace Dialogue
 		private int level, input, reply, mood;
 		private string[] answers;
 		private string sInput;
-		bool check;
 
 		public DialogueController ()
 		{
@@ -18,7 +17,6 @@ namespace Dialogue
 			this.mood = 0;
 			this.answers = new string[3];
 			this.dialogue = new Dialogue ();
-			this.check = false;
 		}
 		/// <summary>
 		/// Starts the dialogue.
@@ -50,13 +48,11 @@ namespace Dialogue
 				}
 				Console.Write ("(1-3): ");
 				sInput = Console.ReadLine ();
-				check = int.TryParse (sInput, out input);
-				while (check == false || input > 3 || input < 0) {
+				while (int.TryParse (sInput, out input) == false || input > 3 || input < 0) {
 					Console.WriteLine ("Use an integer (1-3):");   //Make sure user inputs an integer 1-3
 					sInput = (Console.ReadLine ());
-					check = int.TryParse (sInput, out input);
 				}
-				input--; 
+				input--;
 				//Use user input (answers[0-2])
 
 				switch (answers [input]) {							//Randomized answers return an array of answers[3], which contains

@@ -6,7 +6,7 @@ namespace Game
 	{
 		static void Main(string[] args)
 		{
-			Game game = new Game ();
+			GameController game = new GameController ();
 		}
 	}
 }

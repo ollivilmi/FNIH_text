@@ -42,10 +42,10 @@
     <Compile Include="NPC\NPC.cs" />
     <Compile Include="NPC\BarNPC.cs" />
     <Compile Include="Game\Commands.cs" />
-    <Compile Include="Game\Game.cs" />
     <Compile Include="Game\GameEvents.cs" />
     <Compile Include="Game\Main.cs" />
     <Compile Include="Game\Player.cs" />
+    <Compile Include="Game\GameController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

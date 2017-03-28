@@ -39,7 +39,11 @@ namespace Game
 			{ "help", "help" },
 			{ "what to do", "help" },
 			{ "options", "help" },
-			{ "?", "help" }
+			{ "?", "help" },
+			{ "inventory", "inventory" },
+			{ "items", "inventory" },
+			{ "stuff", "inventory" },
+			{ "equipment", "inventory" }
 		};
 
 		public static Dictionary<string,string> GetCommands()
