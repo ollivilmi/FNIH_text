@@ -46,6 +46,7 @@
     <Compile Include="Game\Main.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Game\GameController.cs" />
+    <Compile Include="Dialogue\BouncerDialogue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

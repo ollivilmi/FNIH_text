@@ -16,6 +16,7 @@ namespace Game
 		private double amount;
 		private string input, command;
 		private Dictionary<string,string> commands;
+		private BouncerDialogue bDialogue;
 
 		public GameController ()
 		{
@@ -25,6 +26,7 @@ namespace Game
 			this.npc = new BarNPC();
 			this.events = new GameEvents (18, 00, player); //Time X hours, X minutes, player
 			this.commands = Commands.GetCommands();
+			bDialogue = new BouncerDialogue ();
 
 			while (playing == true) {
 				Console.WriteLine ("\nDrunk: {0}, Fun: {1}, Money: {2}, Likability: {5} \nScore: {6} Time: {3}:{4}", 
@@ -104,6 +106,11 @@ namespace Game
 					break;
 				case "inventory":
 					player.PrintItems ();
+					break;
+				case "bar":
+					if (bDialogue.bouncerDialogue ()) {
+						player.useMoney (-5);
+					}
 					break;
 				default:
 					Console.WriteLine ("Invalid command");
