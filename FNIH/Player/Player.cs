@@ -14,6 +14,8 @@ namespace Player
         public double money { get; set; }
         public List<string> items { get; set; }
         public string name { get; set; }
+        public int hour { get; set; }
+        public int minute { get; set; }
 
         public Player (string name, int likability, double money, int drunkLevel, int funLevel)
         {

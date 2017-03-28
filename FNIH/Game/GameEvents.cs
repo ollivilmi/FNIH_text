@@ -15,11 +15,11 @@ namespace Game
         private string input, output, item;
         private double amount;
 		private Player.Player player;
-		public GameEvents (int hour, int minute, Player.Player player)
+		public GameEvents (Player.Player player)
 		{
-			this.hour = hour;
-			this.minute = minute;
-			this.player = player;
+            this.player = player;
+            this.hour = player.hour;
+            this.minute = player.minute;	
 		}
 
 		public void addScore (int score) {
@@ -83,7 +83,7 @@ namespace Game
             this.ChangeTime(10 * (int)amount);  // Drinking one beer takes 10 minutes
         }
 
-        public void BarDialogue(BarNPC npc, DialogueController dialogue, Player.Player player)
+        public void BarDialogue(BarNPC npc, DialogueController dialogue)
         {
             npc.changeMood(dialogue.startDialogue(player.getLikability())); //Start dialogue
             npc.ReturnItems(out item);
@@ -98,14 +98,14 @@ namespace Game
             this.addScore(10);
         }
 
-        public void UseMoney(Player.Player player)
+        public void UseMoney()
         {
             Console.WriteLine("How much: ");
             amount = GetDoubleInput();
             player.useMoney(-amount);
         }
         
-        public void CoinToss(Player.Player player) //Throw a coin to double your money or lose it
+        public void CoinToss() //Throw a coin to double your money or lose it
         {
             Console.WriteLine("How much: ");
             amount = GetDoubleInput();
@@ -129,7 +129,7 @@ namespace Game
             this.ChangeTime(10);
         }
         
-        public void GoToBar(Player.Player player, BouncerNPC bouncer)
+        public void GoToBar(BouncerNPC bouncer)
         {
             if (player.items.Contains("Ticket"))
             {

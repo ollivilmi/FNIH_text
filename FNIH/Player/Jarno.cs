@@ -7,7 +7,8 @@ namespace Player
         public Jarno(string name,  int likability, double money, int drunkLevel, int funLevel) : 
             base (name, likability,  money, drunkLevel, funLevel)
         {
-
+            hour = 17;
+            minute = 0;
         }
 
 		override public void Think()

@@ -30,12 +30,12 @@ namespace Game
 			this.playerCreation = new PlayerController (name); //Creates player character
             this.player = playerCreation.GetCharacter(); //Sets player as the character that was chosen
 			this.barNPC = new BarNPC();
-			this.events = new GameEvents (18, 00, player); //Time X hours, X minutes, player
+			this.events = new GameEvents (player); //Time X hours, X minutes, player
 			this.commands = Commands.GetCommands();
 			this.bouncer = new BouncerNPC (player);
 
 			while (playing == true) {
-                events.PrintStats(); //Prints stats
+                events.PrintStats();                                //Prints stats
 				Console.WriteLine ("\nWhat do you want to do: ");
                 command = events.GetStringInput(commands);           //Get a command string
 
@@ -46,10 +46,10 @@ namespace Game
                     events.Drink(amount);     //Drink amount if you can afford it
 					break;
 				case "dialogue":
-                    events.BarDialogue(barNPC, dialogue, player); //Start dialogue with bar NPC
+                    events.BarDialogue(barNPC, dialogue); //Start dialogue with bar NPC
 					break;
 				case "spend":
-                    events.UseMoney(player); //Throw away money
+                    events.UseMoney(); //Throw away money
 					break;
 				case "quit":
 					playing = false;	   //Quit the game
@@ -60,7 +60,7 @@ namespace Game
 					events.ChangeTime ((int)amount);
 					break;
 				case "gamble":
-                    events.CoinToss(player); //Flip a coin to double or lose your money
+                    events.CoinToss(); //Flip a coin to double or lose your money
 					break;
 				case "help":
 					Console.WriteLine ("You can go to the bar, drink, start a dialogue, gamble," +
@@ -70,7 +70,7 @@ namespace Game
 					player.PrintItems ();
 					break;
 				case "bar":
-                    events.GoToBar(player, bouncer);
+                    events.GoToBar(bouncer);
 					break;
 				case "think":
 					player.Think ();

@@ -7,7 +7,8 @@ namespace Player
         public Make(string name, int likability, double money, int drunkLevel, int funLevel) : 
             base (name, likability,  money, drunkLevel, funLevel)
         {
-
+            hour = 18;
+            minute = 30;
         }
 
         override public void Think()
