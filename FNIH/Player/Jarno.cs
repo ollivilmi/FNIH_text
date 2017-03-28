@@ -2,9 +2,15 @@
 
 namespace Player
 {
-	public static class Jarno
+	public class Jarno : Player
 	{
-		public static void Think()
+        public Jarno(string name,  int likability, double money, int drunkLevel, int funLevel) : 
+            base (name, likability,  money, drunkLevel, funLevel)
+        {
+
+        }
+
+		override public void Think()
 		{
 			Console.WriteLine ("I am Jarno.");
 		}

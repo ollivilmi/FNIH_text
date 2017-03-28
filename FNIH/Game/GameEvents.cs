@@ -8,8 +8,8 @@ namespace Game
 		public int score { get; set; }
 		public int hour { get; set; }
 		public int minute { get; set; }
-		private PlayerController player;
-		public GameEvents (int hour, int minute, PlayerController player)
+		private Player.Player player;
+		public GameEvents (int hour, int minute, Player.Player player)
 		{
 			this.hour = hour;
 			this.minute = minute;

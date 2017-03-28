@@ -9,8 +9,8 @@ namespace NPC
 	public class BouncerNPC : NPC
 	{
 		private BouncerDialogue bd;
-		private PlayerController player;
-		public BouncerNPC (PlayerController player)
+		private Player.Player player;
+		public BouncerNPC (Player.Player player)
 		{
 			this.player = player;
 			mood = random.Next (0, 101);

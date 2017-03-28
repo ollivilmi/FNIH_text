@@ -2,9 +2,15 @@
 
 namespace Player
 {
-	public static class Make
+	public class Make : Player
 	{
-		public static void Think()
+        public Make(string name, int likability, double money, int drunkLevel, int funLevel) : 
+            base (name, likability,  money, drunkLevel, funLevel)
+        {
+
+        }
+
+        override public void Think()
 		{
 			Console.WriteLine ("I am Make.");
 		}

@@ -18,17 +18,17 @@ namespace Game
 		private string input, command, name;
 		private Dictionary<string,string> commands;
 		private BouncerNPC bouncer;
-		private PlayerController player;
+        private PlayerController playerCreation;
+        private Player.Player player;
 
 		public GameController ()
 		{
-			this.selection = new CharacterSelection ();
-			this.name = selection.StartSelection ();
-
-			this.playing = true;
+			this.selection = new CharacterSelection (); //Prints character selection menu
+			this.name = selection.StartSelection ();   //Returns name of the character that was chosen
+			this.playing = true;                        
 			this.dialogue = new DialogueController ();
-
-			this.player = new PlayerController (name); //Likability, drunkLevel, money, funLevel
+			this.playerCreation = new PlayerController (name); //Creates player character
+            this.player = playerCreation.GetCharacter(); //Sets player as the character that was chosen
 			this.npc = new BarNPC();
 			this.events = new GameEvents (18, 00, player); //Time X hours, X minutes, player
 			this.commands = Commands.GetCommands();

@@ -2,9 +2,15 @@
 
 namespace Player
 {
-	public static class Placeholder
+	public class Placeholder : Player
 	{
-		public static void Think()
+        public Placeholder(string name, int likability, double money, int drunkLevel, int funLevel) : 
+            base (name, likability,  money, drunkLevel, funLevel)
+        {
+
+        }
+
+        override public void Think()
 		{
 			Console.WriteLine ("I am Placeholder.");
 		}
